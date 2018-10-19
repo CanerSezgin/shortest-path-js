@@ -62,6 +62,8 @@ function runTile(currentTile){
                 console.log('tile: ', tiles[nbIndex].row, tiles[nbIndex].col, 'costs: ', tiles[nbIndex].table.costs)
                 tiles[nbIndex].table.previousTile = tiles.findIndex(tile => tile.row == currentTile.row && tile.col == currentTile.col);
                 $(`#${tiles[nbIndex].row}_${tiles[nbIndex].col}`).addClass('nbvisit')
+                $(`#${tiles[nbIndex].row}_${tiles[nbIndex].col}`).css('background', `#D4${9-Math.floor(tiles[nbIndex].table.costs/2)}822`)
+                
                 $(`#${tiles[nbIndex].row}_${tiles[nbIndex].col}`).html(tiles[nbIndex].table.costs)
             } else {}
         });
@@ -69,7 +71,7 @@ function runTile(currentTile){
         if(nextTile){
             setTimeout(() => {
                 runTile(nextTile)
-            }, 10);
+            }, 25);
         } else {
             console.log('No Tile Left')
         }
@@ -106,6 +108,7 @@ function drawRoad(finish) {
     way.forEach(tile => {
         $(`#${tile.row}_${tile.col}`)
             .removeClass('visited').removeClass('nbvisit')
+            .removeAttr("style")
             .addClass('shortestPath')
     });
 }

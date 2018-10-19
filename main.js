@@ -112,6 +112,7 @@ function clearAfterFinish() {
                 $(`#${tile.row}_${tile.col}`).html('-')
             }
             $(`#${tile.row}_${tile.col}`).removeClass('shortestPath visited nbvisit')
+            $(`#${tile.row}_${tile.col}`).removeAttr("style");
         });
 
 }
